@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node{
+	int value;
+	struct node *next;
+} Node;
+typedef struct list{
+	Node *head;
+	Node *last;
+} List;
+void add(List *list);
+int main(){
+	List _list;
+	_list.head=NULL;
+	_list.last=NULL;
+	add(&_list);
+	Node *p;
+	for(p=_list.head;p;p=p->next){
+		printf("%d  ",p->value);
+	}
+	return 0;
+}
+void add(List *list){
+	Node *p;
+	int value,cnt=1;
+	scanf("%d",&value);
+	
+	while(value!=-1){
+		
+		p=(Node*)malloc(sizeof (Node));
+		p->value=value;
+		p->next=NULL;
+		if(cnt==1){
+			list->head=p;
+			
+			cnt++;
+			goto here;
+		}
+		
+		
+		else if(cnt==2){
+			list->last=p;
+			list->head->next=list->last;
+			cnt++;
+			goto here;
+		}
+		list->last->next=p;
+		list->last=list->last->next;
+		
+		here:
+		scanf("%d",&value);
+		
+	}
+	
+
+}
